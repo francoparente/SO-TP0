@@ -57,7 +57,7 @@ t_log *iniciar_logger(void)
 {
 	t_log *nuevo_logger;
 
-	if ((nuevo_logger = log_create("log/tp0.log", "TP0", 1, LOG_LEVEL_INFO)) == NULL)
+	if ((nuevo_logger = log_create("../log/client.log", "TP0", 1, LOG_LEVEL_INFO)) == NULL)
 	{
 		printf("No se pudo crear el logger");
 		exit(1);
