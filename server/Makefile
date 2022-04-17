@@ -18,20 +18,20 @@ LOG_FOLDER=../log
 # Build Folder
 BUILD_FOLDER=../build
 # Include directory
-INCLUDE_DIRECTORY=./include/ ../lib/inc/
+INCLUDE_DIRECTORY=./include/
 # Source directory
 SOURCE_DIRECTORY=./src
 # Test Directory
 TEST_DIRECTORY=./test
 # The main file path
-MAIN_FILE= ./src/main.c
+MAIN_FILE= ./src/server.c
 # The shared library source directory
-LIB_DIRECTORY= ../lib/src
+LIB_DIRECTORY= #../lib/src
 # Inlcude folder
 # ? Loops [includeDirectory].forEach(includeDirectory => concat("-I ", "includeDirectory"))
 INCLUDES = $(foreach dir, $(shell find $(INCLUDE_DIRECTORY) -type d -print), $(addprefix -I , $(dir)))
 # The shared library source files
-LIB_SOURCES = ../shared/*.o
+LIB_SOURCES = #../shared/*.o
 # Source files
 # ? Obtains all source files except MAIN
 SOURCES = $(filter-out $(MAIN_FILE), $(shell find $(SOURCE_DIRECTORY) -name '*.c')) $(LIB_SOURCES)

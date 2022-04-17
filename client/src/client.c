@@ -69,6 +69,8 @@ t_config *iniciar_config(void)
 {
 	t_config *nuevo_config;
 
+	nuevo_config = config_create("../config/client.cfg");
+
 	return nuevo_config;
 }
 
