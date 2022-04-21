@@ -27,10 +27,13 @@ int iniciar_servidor(void)
 		log_error(logger, "Se cerró el socket porque no se asoció al puerto.");
 	}
 	// Escuchamos las conexiones entrantes
-	listen(socket_servidor, SOMAXCONN);
+	if (listen(socket_servidor, SOMAXCONN))
+	{
+		log_error(logger, "No funciona listen.");
+	}
 
 	freeaddrinfo(servinfo);
-	log_info(logger, "Listo para escuchar a mi cliente");
+	log_debug(logger, "Listo para escuchar a mi cliente");
 
 	return socket_servidor;
 }
@@ -42,7 +45,7 @@ int esperar_cliente(int socket_servidor)
 
 	// Aceptamos un nuevo cliente
 	int socket_cliente = accept(socket_servidor, NULL, NULL);
-	log_info(logger, "Se conecto un cliente!");
+	log_debug(logger, "Se conecto un cliente!");
 
 	return socket_cliente;
 }
