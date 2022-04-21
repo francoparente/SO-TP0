@@ -65,7 +65,7 @@ t_log *iniciar_logger(void)
 {
 	t_log *nuevo_logger;
 
-	if ((nuevo_logger = log_create("../log/client.log", "Cliente", 1, LOG_LEVEL_INFO)) == NULL)
+	if ((nuevo_logger = log_create("/home/francoparente/Documents/SO2022/so-tp0/log/client.log", "Cliente", 1, LOG_LEVEL_INFO)) == NULL)
 	{
 		printf("No se pudo crear el logger");
 		exit(1);
@@ -77,7 +77,7 @@ t_config *iniciar_config(void)
 {
 	t_config *nuevo_config;
 
-	nuevo_config = config_create("../config/client.config");
+	nuevo_config = config_create("/home/francoparente/Documents/SO2022/so-tp0/config/client.config");
 
 	return nuevo_config;
 }
