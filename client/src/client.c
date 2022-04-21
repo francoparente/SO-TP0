@@ -1,5 +1,7 @@
 #include "client.h"
 
+t_log *logger;
+
 int main(void)
 {
 	/*---------------------------------------------------PARTE 2-------------------------------------------------------------*/
@@ -9,7 +11,6 @@ int main(void)
 	char *puerto;
 	char *valor;
 
-	t_log *logger;
 	t_config *config;
 
 	/* ---------------- LOGGING ---------------- */
@@ -65,7 +66,7 @@ t_log *iniciar_logger(void)
 {
 	t_log *nuevo_logger;
 
-	if ((nuevo_logger = log_create("/home/francoparente/Documents/SO2022/so-tp0/log/client.log", "Cliente", 1, LOG_LEVEL_INFO)) == NULL)
+	if ((nuevo_logger = log_create("/home/francoparente/Documents/SO2022/so-tp0/log/client.log", "Cliente", 1, LOG_LEVEL_TRACE)) == NULL)
 	{
 		printf("No se pudo crear el logger");
 		exit(1);

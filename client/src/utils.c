@@ -1,5 +1,7 @@
 #include "../include/utils.h"
 
+extern t_log *logger;
+
 void *serializar_paquete(t_paquete *paquete, int bytes)
 {
 	void *magic = malloc(bytes);
@@ -33,12 +35,12 @@ int crear_conexion(char *ip, char *puerto)
 								server_info->ai_protocol);
 
 	// Ahora que tenemos el socket, vamos a conectarlo
-	if (connect(socket_cliente, server_info, server_info->ai_addrlen) == ERR)
+	if (connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen) == ERR)
 	{
-		printf("No se pudo conectar el socket");
+		log_error(logger, "No se pudo conectar el socket");
 	}
 
-	printf("Se creó la conexión!");
+	log_debug(logger, "Se creó la conexión!");
 	freeaddrinfo(server_info);
 
 	return socket_cliente;
