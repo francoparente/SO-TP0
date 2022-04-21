@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "../include/utils.h"
 
 void *serializar_paquete(t_paquete *paquete, int bytes)
 {
@@ -35,9 +35,10 @@ int crear_conexion(char *ip, char *puerto)
 	// Ahora que tenemos el socket, vamos a conectarlo
 	if (connect(socket_cliente, server_info, server_info->ai_addrlen) == ERR)
 	{
-		perror("No se pudo conectar el socket");
+		printf("No se pudo conectar el socket");
 	}
 
+	printf("Se creó la conexión!");
 	freeaddrinfo(server_info);
 
 	return socket_cliente;
