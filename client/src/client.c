@@ -105,12 +105,21 @@ void leer_consola(t_log *logger)
 void paquete(int conexion)
 {
 	// Ahora toca lo divertido!
-	char *leido;
-	t_paquete *paquete;
+	char *leido = readline("> ");
+	t_paquete *paquete = crear_paquete();
 
 	// Leemos y esta vez agregamos las lineas al paquete
+	while (strcmp(leido, "\0") != 0)
+	{
+		agregar_a_paquete(paquete, leido, sizeof(leido));
+		free(leido);
+		leido = readline("> ");
+	}
+	enviar_paquete(paquete, conexion);
 
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
+	eliminar_paquete(paquete);
+	free(leido);
 }
 
 void terminar_programa(int conexion, t_log *logger, t_config *config)
@@ -120,4 +129,5 @@ void terminar_programa(int conexion, t_log *logger, t_config *config)
 
 	log_destroy(logger);
 	config_destroy(config);
+	liberar_conexion(conexion);
 }
