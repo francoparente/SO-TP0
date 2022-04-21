@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "string": "c",
-        "utils.h": "c"
+        "utils.h": "c",
+        "server.h": "c",
+        "client.h": "c",
+        "string.h": "c",
+        "log.h": "c"
     }
 }
